@@ -32,3 +32,4 @@ def dictionary(min_length=5, max_length=10, max_mismatches=1):
                 if mismatches <= max_mismatches:
                     palindromeDictionary[seq] = rev
     return palindromeDictionary
+
