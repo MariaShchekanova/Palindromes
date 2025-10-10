@@ -5,7 +5,7 @@ def reverse(seq):
         rev += complement[base]
     return rev
 
-def generateSequences(length, bases = ['A', 'T', 'C', 'G']):
+def generate_sequences(length, bases = ['A', 'T', 'C', 'G']):
     sequences = ['']
     for i in range(length):
         new_sequences = []
@@ -17,21 +17,21 @@ def generateSequences(length, bases = ['A', 'T', 'C', 'G']):
 
 def dictionary(min_length = 5, max_length = 10, max_mismatches = 1):
     bases = ['A', 'T', 'C', 'G']
-    palindromeDictionary = {}
+    palindrome_dictionary = {}
     for length in range(min_length, max_length + 1):
-        allSequences = generateSequences(length, bases)
+        all_sequences = generate_sequences(length, bases)
 
 
-        for seq in allSequences:
+        for seq in all_sequences:
             rev = reverse(seq)
             if seq == rev:
-                palindromeDictionary[seq] = rev
+                palindrome_dictionary[seq] = rev
             else:
                 mismatches = 0
                 for i in range(len(seq)):
                     if seq[i] != rev[i]:
                         mismatches += 1
                 if mismatches <= max_mismatches:
-                    palindromeDictionary[seq] = rev
-    return palindromeDictionary
+                    palindrome_dictionary[seq] = rev
+    return palindrome_dictionary
 
