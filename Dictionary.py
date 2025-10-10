@@ -5,7 +5,7 @@ def reverse(seq):
         rev += complement[base]
     return rev
 
-def generateSequences(length, bases=['A', 'T', 'C', 'G']):
+def generateSequences(length, bases = ['A', 'T', 'C', 'G']):
     sequences = ['']
     for i in range(length):
         new_sequences = []
