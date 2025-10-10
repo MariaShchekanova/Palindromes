@@ -13,8 +13,8 @@ def dictionary(sequence, min_length = 5, max_length = 10, max_mismatches = 1):
             segment = sequence[i:i + length]
             rev = reverse(segment)
             mismatches = 0
-            for i in range(len(segment)):
-                if segment[i] != rev[i]:
+            for j in range(len(segment)):
+                if segment[j] != rev[j]:
                     mismatches += 1
             if mismatches <= max_mismatches:
                     palindromeDictionary[segment] = i
