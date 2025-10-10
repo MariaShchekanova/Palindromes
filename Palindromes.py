@@ -6,23 +6,23 @@ def reverse(seq):
     return rev
 
 
-def palindromeCheck(seq, maxMismatches = 1):
+def palindrome_check(seq, max_mismatches = 1):
     rev = reverse(seq)
     mismatches = 0
     for i in range(len(seq)):
         if seq[i] != rev[i]:
             mismatches += 1
-            if mismatches > maxMismatches:
+            if mismatches > max_mismatches:
                return False
     return True
 
 
-def findPalindromes(sequence, min_length = 5, max_length = 10, maxMismatches = 1):
+def find_palindromes(sequence, min_length = 5, max_length = 10, max_mismatches = 1):
     palindromes = []
     for length in range(min_length, max_length + 1):
         for i in range(len(sequence) - length + 1):
             segment = sequence[i:i + length]
-            if palindromeCheck(segment, maxMismatches):
+            if palindrome_check(segment, max_mismatches):
                 palindromes.append((i, segment))
     return palindromes
 
@@ -32,5 +32,5 @@ def density():
 '''
 
 test = "GAATTCGATATCGAATTC"
-result = findPalindromes(test)
+result = find_palindromes(test)
 print(result)
