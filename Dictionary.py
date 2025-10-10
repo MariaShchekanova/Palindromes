@@ -15,11 +15,13 @@ def generateSequences(length, bases=['A', 'T', 'C', 'G']):
         sequences = new_sequences
     return sequences
 
-def dictionary(min_length=5, max_length=10, max_mismatches=1):
+def dictionary(min_length = 5, max_length = 10, max_mismatches = 1):
     bases = ['A', 'T', 'C', 'G']
     palindromeDictionary = {}
     for length in range(min_length, max_length + 1):
         allSequences = generateSequences(length, bases)
+
+
         for seq in allSequences:
             rev = reverse(seq)
             if seq == rev:
