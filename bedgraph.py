@@ -31,13 +31,13 @@ def palindrome_density(sequence, min_length = 5, max_length = 10, max_mismatches
     densities = []
     for start in range(0, len(sequence) - window_size + 1, step_size):
         window = sequence[start:start + window_size]
-        palindromes = find_palindromes(window, min_length = min_length, max_length = max_length, max_mismatches = max_mismatches)
+        palindromes = find_palindromes(window, min_length, max_length, max_mismatches)
         density = len(palindromes) / window_size
         densities.append((start, density))
     return densities
 
 
-test = "GAATTCGATATCGAATTC"
+test = 'GAATTCGATATCGAATTC'
 result = find_palindromes(test)
 print(result)
 
@@ -54,7 +54,7 @@ def read_fasta(filename):
             line = line.strip()
             if not line:
                 continue
-            if line.startswith(">"):
+            if line.startswith('>'):
                 if seq_id is not None:
                     sequences[seq_id] = ''.join(seq_lines)
                 seq_id = line[1:].split()[0]
@@ -68,7 +68,7 @@ def read_fasta(filename):
 
 
 def density_to_bedgraph(fasta_dict, output_bed, window_size = 1000, step_size = 200, min_length = 5, max_length = 10, max_mismatches = 1):
-    with open(output_bed, "w") as out:
+    with open(output_bed, 'w') as out:
         for chrom, seq in fasta_dict.items():
             densities = palindrome_density(seq, min_length, max_length, max_mismatches, window_size, step_size)
 
@@ -76,11 +76,11 @@ def density_to_bedgraph(fasta_dict, output_bed, window_size = 1000, step_size = 
               if density == 0:
                 continue
               end = start + window_size
-              out.write(chrom + "\t" + str(start) + "\t" + str(end) + "\t" + "{:.6f}".format(density) + "\n")
+              out.write(chrom + '\t' + str(start) + '\t' + str(end) + '\t' + '{:.6f}'.format(density) + '\n')
 
 
-fasta_file = "genome.fna"
-bedgraph_file = "palindrome_density.bedgraph"
+fasta_file = 'genome.fna'
+bedgraph_file = 'palindrome_density.bedgraph'
 
 
 fasta_dict = read_fasta(fasta_file)
