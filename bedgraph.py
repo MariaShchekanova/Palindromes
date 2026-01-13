@@ -70,7 +70,7 @@ def read_fasta(filename):
 def density_to_bedgraph(fasta_dict, output_bed, window_size = 1000, step_size = 200, min_length = 5, max_length = 10, max_mismatches = 1):
     with open(output_bed, "w") as out:
         for chrom, seq in fasta_dict.items():
-            densities = palindrome_density(seq, min_length = min_length, max_length = max_length, max_mismatches = max_mismatches, window_size = window_size, step_size = step_size)
+            densities = palindrome_density(seq, min_length, max_length, max_mismatches, window_size, step_size)
 
             for start, density in densities:
               if density == 0:
